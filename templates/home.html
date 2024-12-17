@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="home-wrapper">
+  <h2>채용 공고</h2>
+
+  <!-- 필터 폼 -->
+  <form method="GET" action="{{ url_for('home') }}" class="filter-form">
+    <div class="filter-group">
+      <label for="location">지역:</label>
+      <select name="location" id="location">
+        <option value="">전체</option>
+        {% for loc in unique_locations %}
+        <option value="{{ loc }}" {% if request.args.get('location') == loc %}selected{% endif %}>
+          {{ loc }}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="job_field">직무분야:</label>
+      <select name="job_field" id="job_field">
+        <option value="">전체</option>
+        {% for field in unique_job_fields %}
+        <option value="{{ field }}" {% if request.args.get('job_field') == field %}selected{% endif %}>
+          {{ field }}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="category">카테고리:</label>
+      <select name="category" id="category">
+        <option value="">전체</option>
+        {% for category in unique_categories %}
+        <option value="{{ category }}" {% if request.args.get('category') == category %}selected{% endif %}>
+          {{ category }}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="filter-btn">적용</button>
+  </form>
+
+  {% if jobs %}
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>회사명</th>
+          <th>제목</th>
+          <th>링크</th>
+          <th>지역</th>
+          <th>연봉정보</th>
+          <th>마감일</th>
+          <th>직무분야</th>
+          <th>카테고리</th>
+	  <th>관심</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for job in jobs %}
+        <tr>
+          <td>{{ job.company_name }}</td>
+          <td>{{ job.title }}</td>
+          <td><a href="{{ job.link }}" target="_blank">공고 보기</a></td>
+          <td>{{ job.location }}</td>
+          <td>{{ job.salary_info }}</td>
+          <td>{{ job.deadline }}</td>
+          <td>{{ job.job_field }}</td>
+          <td>{{ job.category }}</td>
+	  <td>
+   	 	 <button class="favorite-btn" data-job-id="{{ job.id }}">
+     		 	즐겨찾기
+   		 </button>
+ 	  </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 페이지네이션 -->
+  <div class="pagination">
+    {% if page > 1 %}
+    <a href="{{ url_for('home', q=search_query, page=page-1) }}">이전</a>
+    {% endif %}
+    {% for i in range(1, total_pages + 1) %}
+    <a href="{{ url_for('home', q=search_query, page=i) }}" class="{% if i == page %}active{% endif %}">{{ i }}</a>
+    {% endfor %}
+    {% if page < total_pages %}
+    <a href="{{ url_for('home', q=search_query, page=page+1) }}">다음</a>
+    {% endif %}
+  </div>
+  {% else %}
+  <p>검색 결과가 없습니다.</p>
+  {% endif %}
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const favoriteButtons = document.querySelectorAll(".favorite-btn");
+
+    favoriteButtons.forEach((button) => {
+      button.addEventListener("click", async () => {
+        const jobId = button.getAttribute("data-job-id");
+        const response = await fetch("/favorite/add", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ job_id: jobId }),
+        });
+
+        const data = await response.json();
+        alert(data.msg);
+      });
+    });
+  });
+</script>
+
+{% endblock %}

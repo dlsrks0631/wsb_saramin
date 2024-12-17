@@ -1,0 +1,129 @@
+/* 마이페이지 전체 레이아웃 */
+.mypage-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #2db400, #228b22);
+}
+
+.mypage-box {
+  background: white;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: left; /* 모든 요소 왼쪽 정렬 */
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* 마이페이지 헤딩 스타일 */
+.mypage-box h2 {
+  font-size: 24px;
+  color: #2db400;
+  margin-bottom: 20px;
+  font-weight: bold;
+  border-bottom: 2px solid #2db400;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* 공통 폼 필드 */
+.mypage-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mypage-box label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.mypage-box input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.mypage-box input:focus {
+  border-color: #2db400;
+  outline: none;
+  box-shadow: 0 0 5px rgba(45, 180, 0, 0.4);
+}
+
+/* 버튼 스타일 */
+.update-btn {
+  background: #2db400;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.update-btn:hover {
+  background: #1a6f15;
+}
+
+/* 현재 비밀번호 확인 버튼 */
+.check-password-btn {
+  background: #2db400;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.check-password-btn:hover {
+  background: #1a6f15;
+}
+
+/* 현재 비밀번호 그룹 */
+.password-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 입력창과 버튼 사이 간격 */
+}
+
+/* 메시지 스타일 */
+.message {
+  font-size: 14px;
+  color: #555;
+  text-align: left; /* 왼쪽 정렬 */
+  margin-top: -10px; /* 메시지가 입력 필드와 가까워지도록 */
+}
+/* 홈으로 돌아가기 링크 */
+.back-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.back-link a {
+  color: #2db400;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
+}
+/* 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

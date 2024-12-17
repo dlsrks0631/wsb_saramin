@@ -1,0 +1,25 @@
+/* 내비게이션 스타일 */
+.main-nav {
+  background: #00796b;
+  padding: 10px 20px;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.main-nav a {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.main-nav a:hover {
+  background: #1a6f15;
+}

@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block content %}
+<div class="favorites-wrapper">
+  <h2>내 즐겨찾기 목록</h2>
+  {% if favorites %}
+  <ul class="favorites-list">
+    {% for job in favorites %}
+    <li>
+      <div class="job-info">
+        <strong>{{ job.company_name }}</strong> - {{ job.title }}
+        <a href="{{ job.link }}" target="_blank">[공고 보기]</a>
+      </div>
+      <button class="delete-btn" data-job-id="{{ job.id }}">삭제</button>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>아직 즐겨찾기에 추가된 공고가 없습니다.</p>
+  {% endif %}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const deleteButtons = document.querySelectorAll(".delete-btn");
+
+    deleteButtons.forEach((button) => {
+      button.addEventListener("click", async () => {
+        const jobId = button.getAttribute("data-job-id");
+
+        if (!confirm("정말로 삭제하시겠습니까?")) return;
+
+        try {
+          const response = await fetch("/favorite/delete", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ job_id: jobId }),
+          });
+
+          const data = await response.json();
+          alert(data.msg);
+
+          if (data.success) {
+            button.closest("li").remove();
+          }
+        } catch (error) {
+          console.error("삭제 중 오류 발생:", error);
+          alert("삭제 처리 중 오류가 발생했습니다.");
+        }
+      });
+    });
+  });
+</script>
+{% endblock %}

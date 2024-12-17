@@ -1,0 +1,201 @@
+/* 홈 페이지 스타일 */
+.home-wrapper {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.home-wrapper h2 {
+  font-size: 24px;
+  color: #2db400;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.home-wrapper p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* 채용 공고 테이블 스타일 */
+.table-wrapper {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: #f4f4f4;
+  color: #555;
+  font-weight: bold;
+}
+
+td a {
+  color: #2db400;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* 페이지네이션 스타일 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 5px;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #2db400;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 30px; /* 둥근 버튼 */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pagination a:hover {
+  background: #2db400;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.pagination a.active {
+  background: #2db400;
+  color: white;
+  pointer-events: none; /* 현재 페이지 버튼 비활성화 */
+  border-color: #2db400;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 이전/다음 버튼 스타일 */
+.pagination .prev,
+.pagination .next {
+  font-size: 16px;
+  padding: 10px 20px;
+  background: #f4f4f4;
+  color: #555;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.pagination .prev:hover,
+.pagination .next:hover {
+  background: #2db400;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.filter-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f3f4f6, #ffffff);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  border: 1px solid #e6e6e6;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.filter-group select {
+  padding: 12px 15px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #ffffff;
+  color: #555555;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.filter-group select:hover,
+.filter-group select:focus {
+  border-color: #2db400;
+  box-shadow: 0 0 8px rgba(45, 180, 0, 0.2);
+  outline: none;
+}
+
+.filter-btn {
+  background: linear-gradient(135deg, #2db400, #228b22);
+  color: white;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-btn:hover {
+  background: linear-gradient(135deg, #228b22, #1d7418);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.filter-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-btn {
+  background-color: #fff;
+  color: #2db400;
+  font-weight: bold;
+  border: 1px solid #2db400;
+  border-radius: 4px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.favorite-btn:hover {
+  background-color: #2db400;
+  color: #fff;
+}

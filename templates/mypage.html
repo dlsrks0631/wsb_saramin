@@ -1,0 +1,124 @@
+{% extends "base.html" %} {% block content %}
+<div class="mypage-wrapper">
+  <div class="mypage-box">
+    <h2>마이페이지</h2>
+    <form method="POST" action="{{ url_for('auth.mypage') }}" id="mypage-form">
+      <label for="username">사용자명</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        value="{{ user.username }}"
+        required
+      />
+
+      <label for="email">이메일</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value="{{ user.email }}"
+        required
+      />
+
+      <label for="current_password">현재 비밀번호</label>
+      <div class="password-group">
+        <input
+          type="password"
+          id="current_password"
+          name="current_password"
+          placeholder="현재 비밀번호"
+          required
+        />
+        <button
+          type="button"
+          id="check-password-btn"
+          class="check-password-btn"
+        >
+          확인
+        </button>
+      </div>
+      <p id="current-password-msg" class="message"></p>
+
+      <label for="password">새 비밀번호</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="새 비밀번호"
+      />
+
+      <label for="confirm_password">새 비밀번호 확인</label>
+      <input
+        type="password"
+        id="confirm_password"
+        name="confirm_password"
+        placeholder="비밀번호 확인"
+      />
+      <p id="password-match-msg" class="message"></p>
+
+      <button type="submit" class="update-btn">정보 수정</button>
+    </form>
+    <div class="back-link">
+      <a href="{{ url_for('home') }}" class="back-to-home">홈으로 돌아가기</a>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const messages = JSON.parse("{{ get_flashed_messages() | tojson | safe }}");
+    messages.forEach((message) => alert(message));
+  });
+
+  // 현재 비밀번호 확인
+  document
+    .getElementById("check-password-btn")
+    .addEventListener("click", async () => {
+      const currentPassword = document.getElementById("current_password").value;
+
+      if (!currentPassword) {
+        alert("현재 비밀번호를 입력하세요.");
+        return;
+      }
+
+      const response = await fetch('{{ url_for("auth.check_password") }}', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ current_password: currentPassword }),
+      });
+
+      const data = await response.json();
+      const msgElement = document.getElementById("current-password-msg");
+
+      if (response.ok) {
+        if (data.success) {
+          msgElement.textContent = "현재 비밀번호가 올바릅니다.";
+          msgElement.style.color = "green";
+        } else {
+          msgElement.textContent = "현재 비밀번호가 틀렸습니다.";
+          msgElement.style.color = "red";
+        }
+      } else {
+        msgElement.textContent = "서버 오류가 발생했습니다.";
+        msgElement.style.color = "red";
+      }
+    });
+
+  // 새 비밀번호 확인
+  document.getElementById("confirm_password").addEventListener("input", () => {
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirm_password").value;
+    const msgElement = document.getElementById("password-match-msg");
+
+    if (password === confirmPassword && password !== "") {
+      msgElement.textContent = "비밀번호가 일치합니다.";
+      msgElement.style.color = "green";
+    } else {
+      msgElement.textContent = "비밀번호가 일치하지 않습니다.";
+      msgElement.style.color = "red";
+    }
+  });
+</script>
+{% endblock %}

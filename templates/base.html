@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title | default("채용 공고 사이트") }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/favorites.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/form.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/register.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/header.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/mypage.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/nav.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/search.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/footer.css') }}"
+    />
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header class="main-header">
+      <div class="header-top">
+        <div class="logo">
+          <a href="{{ url_for('home') }}">📄 취업하자</a>
+        </div>
+        <div class="search-bar">
+          <form action="/" method="GET">
+            <input
+              type="text"
+              name="q"
+              placeholder="검색어를 입력하세요..."
+              value="{{ request.args.get('q', '') }}"
+            />
+            <button type="submit">검색</button>
+          </form>
+        </div>
+        <div class="user-menu">
+          {% if session.get('user') %}
+          <span>안녕하세요, {{ session['user'] }}님</span>
+          <a href="{{ url_for('auth.logout') }}" class="logout-btn">로그아웃</a>
+          {% else %}
+          <a href="{{ url_for('auth.login') }}" class="login-btn">로그인</a>
+          <a href="{{ url_for('auth.register') }}" class="register-btn"
+            >회원가입</a
+          >
+          {% endif %}
+        </div>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="{{ url_for('home') }}">홈</a></li>
+          <li><a href="{{ url_for('auth.mypage') }}">마이페이지</a></li>
+          <li><a href="{{ url_for('auth.view_favorites') }}">즐겨찾기</a></li>
+          <li><a href="{{ url_for('contact') }}">문의하기</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main>{% block content %}{% endblock %}</main>
+
+    <!-- 푸터 -->
+    <footer>
+      <div class="footer-container">
+        <p>&copy; 2024 채용 공고 사이트</p>
+        <p>전북대학교 IT정보공학과 김제현</p>
+        <p>장소: 전북대학교 | 연락처: 010-6758-2739</p>
+      </div>
+    </footer>
+  </body>
+</html>

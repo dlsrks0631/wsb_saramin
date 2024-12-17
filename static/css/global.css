@@ -1,0 +1,33 @@
+/* 공통 및 리셋 스타일 */
+body,
+h1,
+h2,
+h3,
+p,
+a,
+ul,
+li,
+input,
+button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+main {
+  margin-top: 0; /* 헤더와 메인의 간격 제거 */
+}

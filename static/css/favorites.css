@@ -1,0 +1,128 @@
+/* 즐겨찾기 목록 스타일 */
+.favorites-wrapper {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.favorites-wrapper h2 {
+  font-size: 24px;
+  color: #2db400;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.favorites-wrapper p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* 즐겨찾기 리스트 스타일 */
+.favorites-list {
+  list-style: none;
+  padding: 0;
+}
+
+.favorites-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background: #f9f9f9;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.favorites-list li:hover {
+  background-color: #eef8e9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.favorites-list strong {
+  color: #333;
+  font-size: 16px;
+}
+
+.favorites-list a {
+  font-size: 14px;
+  font-weight: bold;
+  color: #2db400;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.favorites-list a:hover {
+  color: #228b22;
+  text-decoration: underline;
+}
+
+/* 삭제 버튼 스타일 */
+.delete-btn {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #d9363e;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 즐겨찾기 버튼 스타일 */
+.favorite-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f4f4;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-btn:hover {
+  background-color: #ffecb3;
+  border-color: #fbc02d;
+  color: #f57f17;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.favorite-btn .favorite-icon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.favorite-btn.added {
+  background-color: #ffecb3;
+  border-color: #fbc02d;
+  color: #f57f17;
+  pointer-events: none; /* 이미 추가된 버튼 클릭 비활성화 */
+}
+
+.favorite-btn.added .favorite-icon {
+  color: #f57f17;
+}
+
+.favorite-btn.added .favorite-text::after {
+  content: "됨";
+  margin-left: 4px;
+}

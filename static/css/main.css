@@ -1,0 +1,48 @@
+/* 홈 화면 스타일 */
+.home-wrapper {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.home-wrapper h2 {
+  font-size: 24px;
+  color: #2db400;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.home-wrapper p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* 채용 공고 테이블 스타일 */
+.table-wrapper {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: #f4f4f4;
+  color: #555;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+}

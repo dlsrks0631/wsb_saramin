@@ -1,0 +1,30 @@
+/* 검색바 스타일 */
+.search-bar {
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.search-bar form {
+    display: flex;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background: #1a6f15;
+    border: none;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    font-weight: bold;
+}
+
+.search-bar button:hover {
+    background: #145a10;
+}

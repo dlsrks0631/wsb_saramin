@@ -1,0 +1,100 @@
+/* 회원가입 페이지 스타일 */
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 화면 높이 100% */
+  background: linear-gradient(135deg, #2db400, #228b22);
+}
+
+.register-box {
+  background: white;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.register-box h2 {
+  font-size: 24px;
+  color: #2db400;
+  margin-bottom: 20px;
+  font-weight: bold;
+  border-bottom: 2px solid #2db400;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.register-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.register-box label {
+  font-weight: bold;
+  font-size: 14px;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.register-box input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.register-box input:focus {
+  border-color: #2db400;
+  outline: none;
+  box-shadow: 0 0 5px rgba(45, 180, 0, 0.4);
+}
+
+.register-btn {
+  background: #2db400;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.register-btn:hover {
+  background: #1a6f15;
+}
+
+.login-link {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.login-link a {
+  color: #2db400;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
